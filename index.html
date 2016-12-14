@@ -1,0 +1,83 @@
+<html lang="en-us"><head>
+    <meta charset="UTF-8">
+    <title>Push.js</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="description" content="A cross-browser solution for the JavaScript Notifications API">
+    <meta name="keywords" content="push,notifications,javascript,jquery,desktop,mobile,js,notification,shim,wrapper,nickersoft">
+    <meta name="author" content="Tyler Nickerson">
+    <link rel="icon" href="favicon.ico">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" type="text/css" href="normalize.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" media="screen">
+</head>
+<body>
+    <main>
+        <h1>Push.js</h1>
+        <h2>JavaScript notifications for every browser<sup>*</sup></h2>
+        <section class="buttons">
+            <a class="button" href="https://github.com/Nickersoft/push.js" target="_blank">Github</a>
+            <a class="button" href="https://npmjs.com/package/push.js" target="_blank">NPM</a>
+            <a class="button" href="javascript:void(0);" id="demoButton">Demo</a>
+        </section>
+        <section class="content">
+            <p>Installing Push is easily installable via <a href="https://npmjs.com" target="_blank">NPM</a>:</p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="cursor">&gt;</span> npm install push.js</code></pre>
+            <p>Or, if you prefer, you can use <a href="https://bower.io" target="_blank">Bower</a> instead:</p>
+            <pre class=" language-bash"><code class=" language-bash"><span class="cursor">&gt;</span> bower install push.js</code></pre>
+            <p>Then, creating a notification is as easy as:</p>
+            <pre class=" language-javascript"><code class=" language-javascript">Push<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token string">"Hello world!"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    body<span class="token punctuation">:</span> <span class="token string">"How's it hangin'?"</span><span class="token punctuation">,</span>
+    icon<span class="token punctuation">:</span> <span class="token string">'icon.png'</span><span class="token punctuation">,</span>
+    timeout<span class="token punctuation">:</span> <span class="token number">4000</span><span class="token punctuation">,</span>
+    onClick<span class="token punctuation">:</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        window<span class="token punctuation">.</span><span class="token function">focus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+            <p>
+                Go ahead and try it by clicking the "Demo" button above! For more documentation, checkout
+                <a href="https://github.com/Nickersoft/push.js" target="_blank">the official repo</a>.
+            </p>
+            <p>
+                If you're really feeling fiesty, you can check out
+                <a href="http://tylernickerson.com" target="_blank">the kid who made this.</a>
+            </p>
+        </section>
+        <footer>
+            "Every browser" being Firefox 22+, Chrome 5+, Safari 6+, Opera 25+, Android Browser 4.4+,
+            Blackberry Browser 10+, Opera Mobile 37+, Firefox Android 47+, and Samsung Internet. Trying to get IE included
+            on the list :)
+        </footer>
+    </main>
+
+    <script async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" src="push.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.5.1/prism.min.js"></script>
+    <script type="text/javascript">
+
+        document.getElementById('demoButton').onclick = function () {
+            Push.create('Call nofitication!', {
+                body: 'Hung is calling you',
+                icon: 'http://cliparts.co/cliparts/piq/8Xp/piq8XpbbT.png',
+                timeout: 4000,
+                onClick: function () {
+                    console.log("Fired!");
+                    window.focus();
+                    this.close();
+                },
+                vibrate: [200, 100, 200, 100, 200, 100, 200],
+                actions: [
+                  { "action": "accept", "title": "Accept", "icon": "https://cdn0.iconfinder.com/data/icons/social-messaging-ui-color-shapes/128/phone-circle-green-512.png" },
+                  { "action": "decline", "title": "Decline", "icon": "https://cdn4.iconfinder.com/data/icons/unigrid-flat-devices/90/017_083_phone_decline_hangup_hang_up-512.png" }
+		            ],
+                serviceWorker: 'sw.js'
+            });
+        };
+    </script>
+
+
+
+
+</body></html>

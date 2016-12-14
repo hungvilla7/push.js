@@ -190,7 +190,8 @@
                             icon: (isString(options.icon) || isUndefined(options.icon)) ? options.icon : options.icon.x32,
                             body: options.body,
                             tag: options.tag,
-                            requireInteraction: options.requireInteraction
+                            requireInteraction: options.requireInteraction,
+                            actions: options.actions
                         }
                     );
                 } catch (e) {
@@ -205,7 +206,8 @@
                                     vibrate: options.vibrate,
                                     tag: options.tag,
                                     data: options.data,
-                                    requireInteraction: options.requireInteraction
+                                    requireInteraction: options.requireInteraction,
+                                    actions: options.actions
                                 }
                             );
                         });
